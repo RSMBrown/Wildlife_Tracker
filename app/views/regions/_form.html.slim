@@ -1,0 +1,11 @@
+div 
+    =form_with model: @region do |form|
+
+        =form.label :Region
+        =form.text_field :region
+            -@region.errors.full_messages_for(:region).each do |message|
+                =message 
+
+        br
+
+        =form.submit

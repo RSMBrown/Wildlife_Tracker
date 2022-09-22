@@ -1,0 +1,27 @@
+h1 
+    = @animal.name 
+
+br
+
+h2
+    | Sightings of 
+    =@animal.name 
+    | 's
+    |  in 
+    =@animal.region.region 
+
+p 
+    -@animal.sightings.each do |sighting|
+        ul
+            =link_to sighting.date, sighting
+
+br 
+=link_to "Add Sighting", new_sighting_path
+br 
+=link_to "Edit Animal", edit_animal_path(@animal)
+br
+=link_to "Delete Animal", animal_path(@animal),
+                    method: :delete, 
+                    data: { confirm: "Are you sure?" }
+br 
+=link_to "Home", root_path

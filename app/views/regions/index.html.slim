@@ -1,0 +1,21 @@
+h1 
+    | Regions
+
+-@regions.each do |region|
+    ul
+        =link_to region.region, region
+br 
+
+=link_to "Add Region", new_region_path 
+br
+=link_to "Animals", animals_path 
+br 
+=link_to "Home", root_path 
+br
+h2 
+    | Search by Region 
+= form_with  url:"/search_region", method: :get do |form| 
+    =form.label :search_by_region
+    =form.text_field :search_by_region
+    =form.submit "Search"
+

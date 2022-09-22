@@ -1,0 +1,15 @@
+h1 
+    | Animals 
+
+-@animals.each do |animal|
+    ul
+        =link_to animal.name, animal 
+br 
+
+=link_to "Add Animal", new_animal_path 
+br
+=link_to "Regions", regions_path 
+br 
+=link_to "All Sightings", sightings_path 
+
+

@@ -1,0 +1,12 @@
+h1 
+    =@region.region
+
+=link_to "Edit Region", edit_region_path(@region)
+br
+=link_to "Delete Region", region_path(@region),
+                    method: :delete, 
+                    data: { confirm: "Are you sure?" }
+br
+=link_to "Regions", regions_path 
+br
+=link_to "Home", root_path

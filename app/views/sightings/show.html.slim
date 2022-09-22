@@ -1,0 +1,22 @@
+h1 
+    =@sighting.animal.name 
+    | , 
+    =@sighting.date 
+    | , 
+    =@sighting.long 
+    |  
+    =@sighting.longs
+    | , 
+    =@sighting.lat 
+    |  
+    =@sighting.lats
+
+br    
+
+=link_to "Edit sighting", edit_sighting_path(@sighting)
+br
+=link_to "Delete sighitng", sighting_path(@sighting),
+                    method: :delete, 
+                    data: { confirm: "Are you sure?" }
+br 
+=link_to "Home", root_path

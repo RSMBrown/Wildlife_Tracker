@@ -6,17 +6,17 @@ h1
 -if @sightings.present?
     -@sightings.each do |sighting|
         ul
-            =@sighting.animal.name 
+            =sighting.animal.name 
             | , 
-            =@sighting.date 
+            =sighting.date 
             | , 
-            =@sighting.long 
+            =sighting.long 
             |  
-            =@sighting.longs
+            =sighting.longs
             | , 
-            =@sighting.lat 
+            =sighting.lat 
             |  
-            =@sighting.lats
+            =sighting.lats
 
             br
 -else

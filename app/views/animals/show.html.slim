@@ -20,8 +20,10 @@ br
 br 
 =link_to "Edit Animal", edit_animal_path(@animal)
 br
-=link_to "Delete Animal", animal_path(@animal),
-                    method: :delete, 
-                    data: { confirm: "Are you sure?" }
+=link_to "Delete this animal", animal_path(@animal),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
+br 
+=link_to "Return to Animals", animals_path 
 br 
 =link_to "Home", root_path

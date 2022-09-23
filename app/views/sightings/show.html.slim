@@ -15,8 +15,10 @@ br
 
 =link_to "Edit sighting", edit_sighting_path(@sighting)
 br
-=link_to "Delete sighitng", sighting_path(@sighting),
-                    method: :delete, 
-                    data: { confirm: "Are you sure?" }
+=link_to "Delete this sighting", sighting_path(@sighting),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
+br
+=link_to "Return to Sightings", sightings_path
 br 
 =link_to "Home", root_path

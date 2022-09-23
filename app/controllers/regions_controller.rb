@@ -41,8 +41,8 @@ class RegionsController < ApplicationController
         @region = Region.find(params[:id])
         @region.destroy
     
-        redirect_to root_path 
-    end 
+        redirect_to root_path
+    end
 
     def search_region
         @animals = Animal.joins(:region).where("regions.region LIKE ?", params[:search_by_region])

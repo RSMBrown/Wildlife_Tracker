@@ -3,9 +3,9 @@ h1
 
 =link_to "Edit Region", edit_region_path(@region)
 br
-=link_to "Delete Region", region_path(@region),
-                    method: :delete, 
-                    data: { confirm: "Are you sure?" }
+=link_to "Delete this Region", region_path(@region),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
 br
 =link_to "Regions", regions_path 
 br

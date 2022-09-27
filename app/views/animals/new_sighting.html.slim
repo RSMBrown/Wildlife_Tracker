@@ -1,0 +1,36 @@
+h1 
+    | Add sighting for 
+    =@animal.name 
+
+=form_with url: animal_create_sighting_path, method: :post do |form|
+
+    =form.label "Animal: "
+    =form.label " #{@animal.name}"
+
+    br
+
+    =form.label "Region"
+    =form.select :region_id, Region.all.collect { |region| [region.region, region.id] }, include_blank: true 
+
+    br 
+
+    =form.label "Longitude Degree" 
+    =form.text_field :long
+        -@sighting.errors.full_messages_for(:long).each do |message|
+            =message 
+    =form.label "Longitude Direction"
+    =form.text_field :longs
+        -@sighting.errors.full_messages_for(:longs).each do |message|
+            =message 
+    br
+
+    =form.label "Lattitude Degree" 
+    =form.text_field :lat
+        -@sighting.errors.full_messages_for(:lat).each do |message|
+            =message 
+    =form.label "Lattitude Direction"
+    =form.text_field :lats
+        -@sighting.errors.full_messages_for(:lats).each do |message|
+            =message 
+    br
+    =form.submit

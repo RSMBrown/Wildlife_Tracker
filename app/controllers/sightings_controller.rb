@@ -12,8 +12,10 @@ class SightingsController < ApplicationController
     end 
     
     def create 
-        @sighting = Sighting.create!(sighting_params)
-    
+        @region = Region.find_by(params[:id])
+        @animal = Animal.find_by(params[:id])
+        @sighting = Sighting.create(sighting_params)
+
         if @sighting.save
             flash[:success] = "New Sighting successfully created!"
             redirect_to sighting_path(@sighting)
@@ -44,12 +46,15 @@ class SightingsController < ApplicationController
         redirect_to root_path
     end 
 
-    def search_date 
-        @sightings = Sighting.where("date LIKE ?", params[:search_by_date])
+    def new_search
+    end 
+
+    def search_date
+        @sightings = Sighting.where("created_at LIKE ?", params[:search_by_date])
     end 
     
     private 
     def sighting_params 
-      params.require(:sighting).permit(:date, :long, :longs, :lat, :lats, :sighting_id, :animal_id)
+      params.require(:sighting).permit( :long, :longs, :lat, :lats, :animal_id, :region_id)
     end 
 end

@@ -4,17 +4,10 @@ h1
 
 -@sightings.each do |sighting|
     ul
-        =link_to sighting.date, sighting
+        =link_to sighting.created_at.strftime("%Y-%b-%d"), sighting
 br 
-
-
-h1 
-    | Search for sighting by date 
-
-= form_with  url:"/search_date", method: :get do |form| 
-    =form.label :search_by_date
-    =form.date_field :search_by_date
-    =form.submit "Search"
-
+=link_to "Add Sighting", new_sighting_path
+br
+=link_to "Search for sighting", new_search_path
 br 
 =link_to "Home", root_path 

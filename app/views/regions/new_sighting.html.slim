@@ -1,31 +1,36 @@
-div 
-    =form_with model: @sighting do |form|
+h1 
+    | Add sighting for 
+    =@region.region 
 
-        =form.label "Region"
-        =form.select :region_id, Region.all.collect { |region| [region.region, region.id] }, include_blank: true 
+div 
+    =form_with url: region_create_sighting_path, method: :post do |form|
+
+        =form.label "Region: "
+        =form.label " #{@region.region.capitalize}"
+        =hidden_field_tag :region_id, @region.id
 
         br
 
         =form.label "Animal"
-        =form.select :animal_id, Animal.all.collect { |animal| [animal.name, animal.id] }, include_blank: true
+        =form.select :animal_id, Animal.all.collect { |animal| [animal.name, animal.id] }, include_blank: true 
 
         br
 
-        =form.label "Longitude Degree" 
+        =form.label "Longitude Degree " 
         =form.text_field :long
             -@sighting.errors.full_messages_for(:long).each do |message|
                 =message 
-        =form.label "Longitude Direction"
+        =form.label " Longitude Direction "
         =form.text_field :longs
             -@sighting.errors.full_messages_for(:longs).each do |message|
                 =message 
         br
 
-        =form.label "Lattitude Degree" 
+        =form.label "Lattitude Degree " 
         =form.text_field :lat
             -@sighting.errors.full_messages_for(:lat).each do |message|
                 =message 
-        =form.label "Lattitude Direction"
+        =form.label " Lattitude Direction "
         =form.text_field :lats
             -@sighting.errors.full_messages_for(:lats).each do |message|
                 =message 

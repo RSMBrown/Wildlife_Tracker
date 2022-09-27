@@ -1,28 +1,20 @@
 h1 
     = @animal.name 
 
-br
-
-h2
-    | Sightings of 
-    =@animal.name 
-    | 's
-    |  in 
-    =@animal.region.region 
-
 p 
+    
     -@animal.sightings.each do |sighting|
-        ul
-            =link_to sighting.date, sighting
+        ul  
+            =sighting.region.region
+            |  |
+            =link_to sighting.created_at.strftime("%Y-%b-%d"), sighting
 
 br 
-=link_to "Add Sighting", new_sighting_path
+=link_to "Add sighting for #{@animal.name}", animal_new_sighting_path(animal_id: @animal)
 br 
 =link_to "Edit Animal", edit_animal_path(@animal)
 br
-=link_to "Delete this animal", animal_path(@animal),
-                    method: :delete,
-                    data: { confirm: "Are you sure?"}
+=link_to "Delete this animal", animal_path(@animal), method: :delete, data: { confirm: "Are you sure?"}
 br 
 =link_to "Return to Animals", animals_path 
 br 

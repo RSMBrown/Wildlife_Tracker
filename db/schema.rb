@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_22_095005) do
+ActiveRecord::Schema.define(version: 2022_09_26_092947) do
 
   create_table "animals", force: :cascade do |t|
-    t.integer "region_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["region_id"], name: "index_animals_on_region_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -27,17 +25,17 @@ ActiveRecord::Schema.define(version: 2022_09_22_095005) do
   end
 
   create_table "sightings", force: :cascade do |t|
+    t.integer "region_id"
     t.integer "animal_id"
-    t.date "date"
     t.decimal "long"
     t.decimal "lat"
     t.string "longs"
     t.string "lats"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.date "created_at", null: false
     t.index ["animal_id"], name: "index_sightings_on_animal_id"
+    t.index ["region_id"], name: "index_sightings_on_region_id"
   end
 
-  add_foreign_key "animals", "regions"
   add_foreign_key "sightings", "animals"
+  add_foreign_key "sightings", "regions"
 end

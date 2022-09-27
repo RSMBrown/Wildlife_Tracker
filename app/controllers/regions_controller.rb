@@ -31,9 +31,9 @@ class RegionsController < ApplicationController
         @region = Region.find(params[:id])
     
         if @region.update(region_params)
-          redirect_to @region
+            redirect_to @region
         else 
-          render :edit 
+            render :edit 
         end 
     end 
     
@@ -44,6 +44,24 @@ class RegionsController < ApplicationController
         redirect_to root_path
     end
 
+    def new_sighting
+        @region = Region.find(params[:id])
+    end 
+    
+    def create_sighting 
+        @region = Region.find(params[:id])
+        @animal = Animal.find(params[:animal_id])
+        @sighting = Sighting.new(region: @region, animal: @animal, long: long, lat: lat, longs: longs, lats: lats)
+    
+        if @sighting.save
+            flash[:success] = "New Sighting successfully created!"
+            redirect_to sighting_path(@sighting)
+        else 
+            flash.now[:error] = "New Sighting creation failed!"
+            render :new_sighting
+        end 
+    end 
+
     def search_region
         @animals = Animal.joins(:region).where("regions.region LIKE ?", params[:search_by_region])
     end 
@@ -51,5 +69,21 @@ class RegionsController < ApplicationController
     private 
     def region_params
         params.require(:region).permit(:region)
+    end 
+
+    def long
+        params[:long]
+    end 
+
+    def longs
+        params[:longs]
+    end 
+
+    def lat
+        params[:lat]
+    end 
+
+    def lats
+        params[:lats]
     end 
 end

@@ -1,6 +1,13 @@
 h1 
     =@region.region
+p 
+    -@region.animals.each do |animal|
+        ul
+            =link_to animal.name, animal
 
+ 
+=link_to "Add sighting for #{@region.region}", region_new_sighting_path(region_id: @region)
+br
 =link_to "Edit Region", edit_region_path(@region)
 br
 =link_to "Delete this Region", region_path(@region),

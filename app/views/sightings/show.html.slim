@@ -1,7 +1,9 @@
 h1 
+    =@sighting.region.region
+    |, 
     =@sighting.animal.name 
     | , 
-    =@sighting.date 
+    =@sighting.created_at.strftime("%Y-%b-%d")
     | , 
     =@sighting.long 
     |  

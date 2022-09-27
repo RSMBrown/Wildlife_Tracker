@@ -6,9 +6,11 @@ h1
 -if @sightings.present?
     -@sightings.each do |sighting|
         ul
+            =sighting.region.region
+            | , 
             =sighting.animal.name 
             | , 
-            =sighting.date 
+            =sighting.created_at
             | , 
             =sighting.long 
             |  
